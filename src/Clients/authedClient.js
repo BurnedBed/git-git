@@ -21,10 +21,28 @@ module.exports = class authedClient extends baseClient{
 
     /**
      * 
-     * @param {String} bio 
+     * @param {String|Boolean} bio 
      */
     async updateBio(bio){
-        if(!bio) throw new TypeError("Bio is required")
-        return await this.requestHandler.sendRequest(endPoints.self_user, `{"bio":"${bio}"}`, "PATCH", "application/vnd.github.v3+json")
+        if(!bio) return await this.requestHandler.sendRequest(endPoints.self_user, `{"bio":null}`, "PATCH", "application/vnd.github.v3+json");
+        return await this.requestHandler.sendRequest(endPoints.self_user, `{"bio":"${bio}"}`, "PATCH", "application/vnd.github.v3+json");
+    }
+
+    /**
+     * 
+     * @param {String|Boolean} username 
+     */
+    async updateTwitterUsername(username){
+        if(!username) return await this.requestHandler.sendRequest(endPoints.self_user, `{"twitter_username":null}`, "PATCH", "application/vnd.github.v3+json");
+        return await this.requestHandler.sendRequest(endPoints.self_user, `{"twitter_username":"${username}"}`, "PATCH", "application/vnd.github.v3+json");
+    }
+
+    /**
+     * 
+     * @param {String|Boolean} name 
+     */
+    async updateName(name){
+        if(!name) return await this.requestHandler.sendRequest(endPoints.self_user, `{"name":null}`, "PATCH", "application/vnd.github.v3+json");
+        return await this.requestHandler.sendRequest(endPoints.self_user, `{"name":"${name}"}`, "PATCH", "application/vnd.github.v3+json");
     }
 }
