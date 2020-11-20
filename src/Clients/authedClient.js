@@ -142,4 +142,39 @@ module.exports = class authedClient extends baseClient{
         if(!username || typeof username != "string") throw new TypeError("Username is required and must be a string");
         return await this.requestHandler.sendRequest(endPoints.self_user_follows(username), null, "DELETE");
     }
+
+
+
+
+    async getSelfRepos(){
+        return await this.requestHandler.sendRequest(endPoints.self_user_repos);
+    }
+
+    /**
+     * 
+     * @param {String} name 
+     * @param {Object} options 
+     * @property {String} [options.description] A short description of the repository, Default: null
+     * @property {String} [options.homepage] A URL with more information about the repository, Default: null
+     * @property {Boolean} [options.private] Whether the repository is private or public, Default: false
+     * @property {Boolean} [options.has_issues] Whether issues are enabled, Defualt: true
+     * @property {Boolean} [options.has_projects] Whether projects are enabled, Default: true
+     * @property {Boolean} [options.has_wiki] Whether the wiki is enabled, Deault: true
+     * @property {Boolean} [options.auto_init] Whether the repository is initialized with a minimal README, Default: true
+     * @property {String} [options.gitignore_template] The desired language or platform to apply to the .gitignore, Default: Node
+     * @property {String} [options.license_template] The license keyword of the open source license for this repository, Default: null
+     * @property {Boolean} [options.allow_squash_merge] Whether to allow squash merges for pull requests, Default: true
+     * @property {Boolean} [options.allow_merge_commit] Whether to allow merge commits for pull requests, Default: true
+     * @property {Boolean} [options.allow_rebase_merge] Whether to allow rebase merges for pull requests, Default: true
+     * @property {Boolean} [options.delete_branch_on_merge] Whether to delete head branches when pull requests are merged, Default: false
+     * @property {Boolean} [options.has_downloads] Whether downloads are enabled, Default: true
+     * @property {Boolean} [options.is_template] Whether this repository acts as a template that can be used to generate new repositories, Default false
+     */
+    async createRepo(name, options){   
+        if(!name || typeof name != "string") throw new TypeError("Name is required and must be a string");
+        if(!options && typeof options != "object") throw new TypeError("Options is required and must be a object");
+        
+       
+
+    }
 }
