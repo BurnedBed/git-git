@@ -45,4 +45,31 @@ module.exports = class authedClient extends baseClient{
         if(!name) return await this.requestHandler.sendRequest(endPoints.self_user, `{"name":null}`, "PATCH", "application/vnd.github.v3+json");
         return await this.requestHandler.sendRequest(endPoints.self_user, `{"name":"${name}"}`, "PATCH", "application/vnd.github.v3+json");
     }
+
+    /**
+     * 
+     * @param {String|Boolean} email 
+     */
+    async updatePublicEmail(email){
+        if(!email) return await this.requestHandler.sendRequest(endPoints.self_user, `{"email":null}`, "PATCH", "application/vnd.github.v3+json");
+        return await this.requestHandler.sendRequest(endPoints.self_user, `{"email":"${email}"}`, "PATCH", "application/vnd.github.v3+json");
+    }
+
+    /**
+     * 
+     * @param {String|Boolean} url  
+     */
+    async updateBlogUrl(url){
+        if(!url) return await this.requestHandler.sendRequest(endPoints.self_user, `{"blog":null}`, "PATCH", "application/vnd.github.v3+json");
+        return await this.requestHandler.sendRequest(endPoints.self_user, `{"blog":"${url}"}`, "PATCH", "application/vnd.github.v3+json");
+    }
+
+    /**
+     * 
+     * @param {String|Boolean} company 
+     */
+    async updateCompany(company){
+        if(!company) return await this.requestHandler.sendRequest(endPoints.self_user, `{"company":null}`, "PATCH", "application/vnd.github.v3+json");
+        return await this.requestHandler.sendRequest(endPoints.self_user, `{"company":"${company}"}`, "PATCH", "application/vnd.github.v3+json");
+    }
 }
