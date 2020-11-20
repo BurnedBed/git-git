@@ -113,4 +113,15 @@ module.exports = class authedClient extends baseClient{
         return await this.requestHandler.sendRequest(endPoints.self_user_followers(amoutOnPage, page));
     }
 
+    /**
+     * 
+     * @param {Number} amoutOnPage 
+     * @param {Number} page 
+     */
+    async getFollowing(amoutOnPage, page){
+        if(!amoutOnPage || !page) throw new TypeError("AmoutOnPage and page is required");
+        if(typeof amoutOnPage != "number" || typeof page != "number") throw new TypeError("AmoutOnPage and page must be a number");
+        if(amoutOnPage > 100) amoutOnPage = 100;
+        return await this.requestHandler.sendRequest(endPoints.self_user_following(amoutOnPage, page));
+    }
 }
