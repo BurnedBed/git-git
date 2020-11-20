@@ -23,9 +23,13 @@ module.exports = class authedRequestHandler extends base{
             headers: Headers,
         }
         if(body) final.body = body;
-        console.log(final);
         let fetched = await fetch(endPoints.base_url + endPoint, final);
-        fetched = await fetched.json();
+        try{
+            fetched = await fetched.json();
+        }catch(err){
+            return fetched
+        }
+        
         if(fetched.message) return new Error(fetched.message);
         return fetched;
         
