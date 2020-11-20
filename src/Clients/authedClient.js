@@ -134,6 +134,10 @@ module.exports = class authedClient extends baseClient{
         return await this.requestHandler.sendRequest(endPoints.self_user_follows(username), null, "PUT");
     }
 
+    /**
+     * 
+     * @param {String} username 
+     */
     async unfollowUser(username){
         if(!username || typeof username != "string") throw new TypeError("Username is required and must be a string");
         return await this.requestHandler.sendRequest(endPoints.self_user_follows(username), null, "DELETE");
