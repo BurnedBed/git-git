@@ -22,11 +22,12 @@ module.exports = class authedRequestHandler extends base{
             method: method || "GET",
             headers: Headers,
         }
-        if(body) final.body = body
-        console.log(final)
-        let fetched = await fetch(endPoints.base_url + endPoint, final)
+        if(body) final.body = body;
+        console.log(final);
+        let fetched = await fetch(endPoints.base_url + endPoint, final);
         fetched = await fetched.json();
-        return fetched
+        if(fetched.message) return new Error(fetched.message);
+        return fetched;
         
     }
 }

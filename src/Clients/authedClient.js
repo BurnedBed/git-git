@@ -124,4 +124,8 @@ module.exports = class authedClient extends baseClient{
         if(amoutOnPage > 100) amoutOnPage = 100;
         return await this.requestHandler.sendRequest(endPoints.self_user_following(amoutOnPage, page));
     }
+
+    async followUser(username){
+
+    }
 }
