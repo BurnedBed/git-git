@@ -15,7 +15,7 @@ module.exports = class authedRequestHandler extends base{
 
         let Headers = {
             Authorization: this.auth,
-            "Content-Type": contentType || "application/json"
+            "Content-Type": contentType || "application/json",
         }
         
         let final = {

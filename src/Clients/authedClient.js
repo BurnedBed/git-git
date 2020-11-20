@@ -98,4 +98,19 @@ module.exports = class authedClient extends baseClient{
         if(typeof hireable != "boolean") throw new TypeError("Hireable must be boolean");
         return await this.requestHandler.sendRequest(endPoints.self_user, `{"hireable":"${hireable}"}`, "PATCH", "application/vnd.github.v3+json");
     }   
+   
+
+
+    /**
+     * 
+     * @param {Number} amoutOnPage 
+     * @param {Number} page 
+     */
+    async getFollowers(amoutOnPage, page){
+        if(!amoutOnPage || !page) throw new TypeError("AmoutOnPage and page is required");
+        if(typeof amoutOnPage != "number" || typeof page != "number") throw new TypeError("AmoutOnPage and page must be a number");
+        if(amoutOnPage > 100) amoutOnPage = 100;
+        return await this.requestHandler.sendRequest(endPoints.self_user_followers(amoutOnPage, page));
+    }
+
 }
