@@ -73,6 +73,10 @@ module.exports = class authedClient extends baseClient{
         return await this.requestHandler.sendRequest(endPoints.self_user, `{"company":"${company}"}`, "PATCH", "application/vnd.github.v3+json");
     }
 
+    /**
+     * 
+     * @param {String|Boolean} location 
+     */
     async updateLocation(location){
         if(!location) return await this.requestHandler.sendRequest(endPoints.self_user, `{"location":null}`, "PATCH", "application/vnd.github.v3+json");
         return await this.requestHandler.sendRequest(endPoints.self_user, `{"location":"${location}"}`, "PATCH", "application/vnd.github.v3+json");
